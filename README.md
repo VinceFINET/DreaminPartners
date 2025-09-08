@@ -71,7 +71,7 @@
 - The `name` property is mandatory with at least two propeties `firstname` and `lastname`. Any other properties are optional.
 - Below is an example of such QRCode:
 
-![example of a QRCode](./image.png)
+![example of a QRCode](./docs/qrcode-example.png)
 
 ## How do I pass visitors information to the partners afterwards?
 
