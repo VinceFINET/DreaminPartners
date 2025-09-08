@@ -37,6 +37,10 @@
 - 1 Custom LWC: leadScanner
 - 1 Permission Set: Dreamin Partners User
 
+<div align="center">
+  <img src="./docs/dreaminpartnersapp-illustration.png" width="512" alt="Dreamin Partners illustration" />
+</div>
+
 ## How my partners can use it?
 
 - Step 1:
@@ -53,7 +57,7 @@
 - Step 5:
   - The application is called "Dreamin Partners", on the home page of this app.
   - As of now, the only service that we provide is to scan visitors' QRCodes to generate leads for partners.
-
+ 
 ## How do I pass visitors information to the applicaiton
 
 - When you print the QRCode in the visitors' badges, make sure the information in the QRCode is using this template:
@@ -71,7 +75,9 @@
 - The `name` property is mandatory with at least two propeties `firstname` and `lastname`. Any other properties are optional.
 - Below is an example of such QRCode:
 
-![example of a QRCode](./docs/qrcode-example.png)
+<div align="center">
+  <img src="./docs/qrcode-example.png" width="256" alt="Example of a QRCode" />
+</div>
 
 ## How do I pass visitors information to the partners afterwards?
 
