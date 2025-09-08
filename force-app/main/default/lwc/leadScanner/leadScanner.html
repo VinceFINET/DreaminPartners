@@ -1,0 +1,11 @@
+<template>
+    <lightning-layout horizontal-align="center" vertical-align="center">
+        <lightning-layout-item padding="around-small">
+            <lightning-barcode-scanner icon-size="large" onerror={handleError} onscan={handleScan}></lightning-barcode-scanner>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+            <p style="color: red;">{errorMessage}</p>
+            <p style="color: green;">{successMessage}</p>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>
