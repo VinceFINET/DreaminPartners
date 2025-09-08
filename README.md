@@ -29,6 +29,12 @@
   <img alt="Deploy to Salesforce (production)" src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
 
+## Deploy to Salesforce (sandbox)
+
+<a href="https://githubsfdeploy-sandbox.herokuapp.com/app/githubdeploy/VinceFINET/DreaminPartners?ref=main">  
+  <img alt="Deploy to Salesforce (sandbox)" src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
+</a>
+
 ## What's inside?
 
 - 1 Custom App: Dreamin Partners
