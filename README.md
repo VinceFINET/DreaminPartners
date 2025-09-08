@@ -1,8 +1,41 @@
-# Dreamin Partners salesforce application
+<div align="center">
+  <img src="docs/dreaminpartnersapp-icon.png" width="256" alt="Dreamin Partners logo" />
+  <h1>
+    Dreamin Partners salesforce application
+  </h1>
+  <p>
+    <b>Dreamin Partners</b> is a salesforce application that Dreamin Event organizers can propose to their partners while experiencing an event.
+  </p>
+  <a href="https://github.com/VinceFINET/DreaminPartners/network/members">
+    <img alt="forks on github" src="https://img.shields.io/github/forks/VinceFINET/DreaminPartners?style=flat-square&logoColor=blue">
+  </a>
+  <a href="https://github.com/VinceFINET/DreaminPartners/stargazers">
+    <img alt="stars on github" src="https://img.shields.io/github/stars/VinceFINET/DreaminPartners?style=flat-square">
+  </a>
+  <a href="https://github.com/VinceFINET/DreaminPartners/watchers">
+    <img alt="watchers" src="https://img.shields.io/github/watchers/VinceFINET/DreaminPartners?style=flat-square">
+  </a>
+  <a href="https://github.com/VinceFINET/DreaminPartners/issues">
+    <img alt="issues" src="https://img.shields.io/github/issues-raw/VinceFINET/DreaminPartners?style=flat-square">
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img alt="licenses" src="https://img.shields.io/badge/License-MIT-yellow.svg">
+  </a>
+</div>
 
-## What is this application?
+## Deploy to Salesforce (production and developer edition)
 
-This is a salesforce applicaiton that Dreamin Event organizers can propose to their partners while experiencing an event.
+<a href="https://githubsfdeploy.herokuapp.com/app/githubdeploy/VinceFINET/DreaminPartners?ref=main">
+  <img alt="Deploy to Salesforce (production)" src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
+</a>
+
+## What's inside?
+
+- 1 Custom App: Dreamin Partners
+- 1 Custom Tab: 🏠 Home
+- 1 Flexi Page: 🏠 Home
+- 1 Custom LWC: leadScanner
+- 1 Permission Set: Dreamin Partners User
 
 ## How my partners can use it?
 
