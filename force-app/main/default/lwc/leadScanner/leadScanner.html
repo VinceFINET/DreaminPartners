@@ -4,8 +4,26 @@
             <lightning-barcode-scanner icon-size="large" onerror={handleError} onscan={handleScan}></lightning-barcode-scanner>
         </lightning-layout-item>
         <lightning-layout-item padding="around-small">
-            <p style="color: red;">{errorMessage}</p>
-            <p style="color: green;">{successMessage}</p>
+            <p if:true={errorMessage} style="color: red;">{errorMessage}</p>
+            <p if:true={successMessage} style="color: green;">{successMessage}</p>
         </lightning-layout-item>
     </lightning-layout>
+    <template if:true={errorMessage}>
+        <h1 class="slds-text-heading_large">Alternative process</h1>
+        <lightning-input type="input" label="First Name" value={altFirstName}></lightning-input>
+        <lightning-input type="input" label="Last Name" value={altLastName}></lightning-input>
+        <lightning-input type="input" label="Company" value={altCompany}></lightning-input>
+        <lightning-input type="email" label="Email" value={altEmail}></lightning-input>
+        <lightning-input type="tel" label="Phone" value={altPhone}></lightning-input>
+        <lightning-button label="Insert" onclick={handleAternativeData}></lightning-button>
+    </template>
+    <br />
+    <template if:true={showLogs}>
+        <lightning-button label="Hide Log" onclick={handleHideLog}></lightning-button>
+        <h1 class="slds-text-heading_large">Logs</h1>
+        <pre>{logs}</pre>
+    </template>
+    <template if:false={showLogs}>
+        <lightning-button label="Show Log" onclick={handleShowLog}></lightning-button>
+    </template>
 </template>

@@ -4,7 +4,15 @@
     <isExposed>true</isExposed>
     <targets>
         <target>lightning__AppPage</target>
-        <target>lightning__RecordPage</target>
-        <target>lightning__HomePage</target>
-    </targets>  
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__AppPage">
+            <property name="template" 
+                      label="Regular expression representing the input data to be scanned" 
+                      description="The regular expression must contain the following named capture groups: F (First Name), L (Last Name), C (Company), E (Email) and P (Phone)"
+                      type="String" 
+                      default="{.*&quot;name&quot;:.*{.*&quot;firstname&quot;:.*&quot;(?&lt;F&gt;.*)&quot;,.*&quot;lastname&quot;:.*&quot;(?&lt;L&gt;.*)&quot;.*},.*&quot;company&quot;:.*&quot;(?&lt;C&gt;.*)&quot;,.*&quot;email&quot;:.*&quot;(?&lt;E&gt;.*)&quot;,.*&quot;phone&quot;:.*&quot;(?&lt;P&gt;.*)&quot;.*}" 
+                      required="true" />
+        </targetConfig>
+    </targetConfigs>
 </LightningComponentBundle>
