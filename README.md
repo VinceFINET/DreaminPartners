@@ -64,7 +64,7 @@
   - The application is called "Dreamin Partners", on the home page of this app.
   - As of now, the only service that we provide is to scan visitors' QRCodes to generate leads for partners.
  
-## How do I pass visitors information to the applicaiton
+## How do I pass visitors information to the application
 
 - When you print the QRCode in the visitors' badges, make sure the information in the QRCode is using this template:
 ```
@@ -78,12 +78,19 @@
     "phone": "+44 (0)12 345 6789"
 }
 ```
-- The `name` property is mandatory with at least two propeties `firstname` and `lastname`. Any other properties are optional.
+- The `name` property is mandatory with at least two propeties `firstname` and `lastname`. Any other properties are optional (unless you set up additional mandatory fields at the Lead level or any validation rules).
 - Below is an example of such QRCode:
 
 <div align="center">
   <img src="./docs/qrcode-example.png" width="256" alt="Example of a QRCode" />
 </div>
+
+- The template used for the JSON can be changed in the LWC configuration when it's inserted in the flexipage. It's a regular expression. If you don't know what it is keep the default value that can read the above template/example.
+
+## What happens if the scanner does not work?
+
+- If for some reason your user experience an error while scanning, there is an alternative process for them to follow. So in short they can type the name and company of the lead (mandatory information) additionnaly can put phone and/or email address. And hit "save" button.
+- Technical logs are available in the "log" tab if you need to understand what's happening there. But the most important is that our dear partners will not be blocked!
 
 ## How do I pass visitors information to the partners afterwards?
 
