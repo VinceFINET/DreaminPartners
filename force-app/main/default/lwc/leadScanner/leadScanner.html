@@ -1,36 +1,18 @@
 <template>
-    <lightning-tabset active-tab-value="scanalead">
-        <lightning-tab label="Scan" value="scanalead" icon-name="utility:scan">
-            <p>Use the barcode scanner above to scan a lead's QR code (only availabe in Mobile or Tablet).</p>
-            <lightning-layout horizontal-align="center" vertical-align="center">
-                <lightning-layout-item padding="around-small">
-                    <lightning-barcode-scanner icon-size="large" onerror={handleScanError} onscan={handleScan}></lightning-barcode-scanner>
-                </lightning-layout-item>
-            </lightning-layout>
-        </lightning-tab>
-        <lightning-tab label="Alternative" icon-name="utility:help_center" value="alternative">
-            <p>If an error occurs during the scanning process, you can manually enter the lead information below and click "Insert" to create a new lead.</p>
-            <lightning-layout horizontal-align="center" vertical-align="start">
-                <lightning-layout-item padding="around-small" size="10">
-                    <lightning-input type="input" label="First Name" value={altFirstName} data-field="altFirstName" onchange={handleAlternativeInputChange} required></lightning-input>
-                    <lightning-input type="input" label="Last Name"  value={altLastName}  data-field="altLastName"  onchange={handleAlternativeInputChange} required></lightning-input>
-                    <lightning-input type="input" label="Company"    value={altCompany}   data-field="altCompany"   onchange={handleAlternativeInputChange} required></lightning-input>
-                    <lightning-input type="email" label="Email"      value={altEmail}     data-field="altEmail"     onchange={handleAlternativeInputChange}></lightning-input>
-                    <lightning-input type="tel"   label="Phone"      value={altPhone}     data-field="altPhone"     onchange={handleAlternativeInputChange}></lightning-input>
-                </lightning-layout-item>
-                <lightning-layout-item padding="around-small" size="2">
-                    <lightning-button-icon icon-name="utility:save" title="Save" variant="brand" onclick={handleAlternativeProcess} disabled={altSaveButtonDisabled}><label>Save</label></lightning-button-icon>
-                </lightning-layout-item>
-            </lightning-layout>
-        </lightning-tab>
-        <lightning-tab label="Logs" icon-name="utility:setup" value="logs">
-            <p>Logs to help support to figure out any errors you may have</p>
-            <template if:true={logs}>
-                <pre style="background-color: white;">{logs}</pre>
-            </template>
-            <template if:false={logs}>
-                <pre>No log yet...</pre>
-            </template>
-        </lightning-tab>
-    </lightning-tabset>
+    <lightning-layout vertical-align="center" horizontal-align="space">
+        <lightning-layout-item padding="around-small">
+            <div style="text-align: center">
+                <lightning-barcode-scanner icon-size="large" onerror={handleScanError} onscan={handleScan}></lightning-barcode-scanner>
+                <br />
+                <label>Scan badge</label>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+            <div style="text-align: center">
+                <lightning-icon icon-name="action:record" style="cursor: pointer;" size="large" alternative-text="Create lead manually" title="Create lead manually" onclick={handleManualLeadCreation}></lightning-icon>
+                <br />
+                <label>Create lead manually</label>
+            </div>
+        </lightning-layout-item>
+    </lightning-layout>
 </template>

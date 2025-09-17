@@ -49,48 +49,42 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
+                <componentInstanceProperties>
+                    <name>template</name>
+                    <value>{.*&quot;name&quot;:.*{.*&quot;firstname&quot;:.*&quot;(?&lt;F&gt;.*)&quot;,.*&quot;lastname&quot;:.*&quot;(?&lt;L&gt;.*)&quot;.*},.*&quot;company&quot;:.*&quot;(?&lt;C&gt;.*)&quot;,.*&quot;email&quot;:.*&quot;(?&lt;E&gt;.*)&quot;,.*&quot;phone&quot;:.*&quot;(?&lt;P&gt;.*)&quot;.*}</value>
+                </componentInstanceProperties>
                 <componentName>leadScanner</componentName>
                 <identifier>c_leadScanner</identifier>
             </componentInstance>
         </itemInstances>
-        <name>Facet-f47ec98c-2dee-4a71-aa70-0896d80b7c0d</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
         <itemInstances>
             <componentInstance>
                 <componentInstanceProperties>
-                    <name>active</name>
+                    <name>enableInlineEdit</name>
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>body</name>
-                    <value>Facet-f47ec98c-2dee-4a71-aa70-0896d80b7c0d</value>
+                    <name>entityName</name>
+                    <value>Lead</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>title</name>
-                    <value>Scan a lead</value>
-                </componentInstanceProperties>
-                <componentName>flexipage:tab</componentName>
-                <identifier>flexipage_tab</identifier>
-            </componentInstance>
-        </itemInstances>
-        <name>Facet-d7761614-1f78-44ca-b03c-ae9c9ff9845d</name>
-        <type>Facet</type>
-    </flexiPageRegions>
-    <flexiPageRegions>
-        <itemInstances>
-            <componentInstance>
-                <componentInstanceProperties>
-                    <name>label</name>
-                    <value>Tabs</value>
+                    <name>filterName</name>
+                    <value>TodaysLeads</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
-                    <name>tabs</name>
-                    <value>Facet-d7761614-1f78-44ca-b03c-ae9c9ff9845d</value>
+                    <name>hideActionBar</name>
+                    <value>true</value>
                 </componentInstanceProperties>
-                <componentName>flexipage:tabset</componentName>
-                <identifier>flexipage_tabset</identifier>
+                <componentInstanceProperties>
+                    <name>hideSearchBar</name>
+                    <value>true</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>pageSize</name>
+                    <value>5</value>
+                </componentInstanceProperties>
+                <componentName>flexipage:filterListCard</componentName>
+                <identifier>flexipage_filterListCard</identifier>
             </componentInstance>
         </itemInstances>
         <name>region2</name>

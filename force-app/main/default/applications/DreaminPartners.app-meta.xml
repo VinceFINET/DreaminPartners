@@ -15,6 +15,5 @@
     <navType>Standard</navType>
     <setupExperience>all</setupExperience>
     <tabs>DreaminPartnersHome</tabs>
-    <tabs>standard-Lead</tabs>
     <uiType>Lightning</uiType>
 </CustomApplication>
