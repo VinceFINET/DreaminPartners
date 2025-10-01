@@ -85,6 +85,13 @@
   <img src="./docs/qrcode-example.png" width="256" alt="Example of a QRCode" />
 </div>
 
+- Below is an example of such QRCode following example #3:
+
+<div align="center">
+  <img src="./docs/qrcode-example2.jpg" width="256" alt="Example of a QRCode" />
+</div>
+
+
 ## Setting the LWC to scan codes
 - Drag and drop the LeadScanner LWC in a flexipage
 - You need to set its template regular expression, the target sobject you will use to capture the information for partner and then how do you map the information in the QRCode in this sobject.
