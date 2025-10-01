@@ -66,26 +66,60 @@
  
 ## How do I pass visitors information to the application
 
-- When you print the QRCode in the visitors' badges, make sure the information in the QRCode is using this template:
-```
-{ 
-    "name": { 
-        "firstname": "James", 
-        "lastname": "BOND"
-    }, 
-    "company": "MI6", 
-    "email": "james@bond.com",
-    "phone": "+44 (0)12 345 6789"
-}
-```
-- The `name` property is mandatory with at least two propeties `firstname` and `lastname`. Any other properties are optional (unless you set up additional mandatory fields at the Lead level or any validation rules).
-- Below is an example of such QRCode:
+- Make sure all the team agrees with a template that will be used to generate the information stored in the QRCode.
+- The template can be a simple string or a JSON structure.
+- Obviously in the template you need to identify the place where we can get the following information (all optional) about the attendee:
+  - Firstname
+  - Lastname
+  - Company
+  - Email
+  - Phone
+  - Reference to a Salesforce Record
+- Some examples:
+  - #1: `{ "name": { "firstname": "James", "lastname": "BOND" }, "company": "MI6",  "email": "james@bond.com", "phone": "+44 (0)12 345 6789" }`
+  - #2: `{ "firstname": "James", "lastname": "BOND", "company": "MI6",  "reference": "003AW00000o4DCTYA2" }`
+  - #3: `"James","BOND","003AW00000o4DCTYA2"`
+- Below is an example of such QRCode following example #1:
 
 <div align="center">
   <img src="./docs/qrcode-example.png" width="256" alt="Example of a QRCode" />
 </div>
 
-- The template used for the JSON can be changed in the LWC configuration when it's inserted in the flexipage. It's a regular expression. If you don't know what it is keep the default value that can read the above template/example.
+- Below is an example of such QRCode following example #3:
+
+<div align="center">
+  <img src="./docs/qrcode-example2.jpg" width="256" alt="Example of a QRCode" />
+</div>
+
+
+## Setting the LWC to scan codes
+- Drag and drop the LeadScanner LWC in a flexipage
+- You need to set its template regular expression, the target sobject you will use to capture the information for partner and then how do you map the information in the QRCode in this sobject.
+
+### The template regular expression
+- The template regular expression is a way for us to extract the information about the attendee
+- From the template you agreed, you need to create a regular expression with predefined groups: F, L, C, E, P and K.
+- As an illustration, here are corresponding regular expression to the previous examples:
+  - #1: `{.*"name":.*{.*"firstname":.*"(?<F>.*)",.*"lastname":.*"(?<L>.*)".*},.*"company":.*"(?<C>.*)",.*"email":.*"(?<E>.*)",.*"phone":.*"(?<P>.*)".*}`
+  - #2: `{.*"firstname":.*"(?<F>.*)",.*"lastname":.*"(?<L>.*)",.*"company":.*"(?<C>.*)",.*"reference":.*"(?<K>.*)".*}`
+  - #3: `"(?<F>.*)","(?<L>.*)","(?<K>.*)"`
+
+### The target SObject
+- By default, the component will insert Leads but you can change this to any other object.
+- Keep in mind that the current user needs "Create" permission to that object.
+- This is the API Developer Name that we want here.
+
+### The field names used in mapping
+- Specify the fields to use when mapping the information into records.
+- The fields need to exist in the previous given SObject.
+- F stands for First name
+- L stands for Last name
+- C stands for Company
+- E stands for Email
+- P stands for Phone
+- K stands for Reference
+- Keep in mind that the current user needs "Update" permission to these fields.
+- These are the API Developer Names that we want here.
 
 ## What happens if the scanner does not work?
 
