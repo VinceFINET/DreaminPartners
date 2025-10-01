@@ -55,6 +55,48 @@ export default class LeadScanner extends NavigationMixin(LightningElement) {
     @api template;
 
     /**
+     * @description The API name of the SObject where we create a new record
+     * @type {string}
+     */
+    @api sobject;
+
+    /**
+     * @description The API name of the field to map to the F
+     * @type {string}
+     */
+    @api firstname;
+
+    /**
+     * @description The API name of the field to map to the L
+     * @type {string}
+     */
+    @api lastname;
+
+    /**
+     * @description The API name of the field to map to the C
+     * @type {string}
+     */
+    @api company;
+
+    /**
+     * @description The API name of the field to map to the P
+     * @type {string}
+     */
+    @api phone;
+
+    /**
+     * @description The API name of the field to map to the E
+     * @type {string}
+     */
+    @api email;
+
+    /**
+     * @description The API name of the field to map to the K
+     * @type {string}
+     */
+    @api referenceId;
+
+    /**
      * @description Handles errors coming from the scanner component
      * @param {CustomEvent} event The event containing the error details
      */
@@ -103,27 +145,25 @@ export default class LeadScanner extends NavigationMixin(LightningElement) {
             if (!matching) {
                 throw new Error('No match!');
             }
-            const leadInformation = matching.groups;
+            const recordInformation = matching.groups;
             this._logger.log(' ok!', false);
 
             // Inserting record in database
             // See https://developer.salesforce.com/docs/platform/lwc/guide/reference-create-record.html
-            this._logger.log('Inserting the lead record...');
-            const leadRecord = await createRecord({
-                apiName: 'Lead', 
-                fields: {
-                    FirstName: leadInformation.F,
-                    LastName: leadInformation.L,
-                    Company: leadInformation.C,
-                    Phone: leadInformation.P,
-                    Email: leadInformation.E
-                }
-            });
+            this._logger.log(`Inserting the ${this.sobject} record...`);
+            const fieldsInformation = {};
+            if (recordInformation.F && this.firstname) fieldsInformation[this.firstname] = recordInformation.F;
+            if (recordInformation.L && this.lastname) fieldsInformation[this.lastname] = recordInformation.L;
+            if (recordInformation.C && this.company) fieldsInformation[this.company] = recordInformation.C;
+            if (recordInformation.P && this.phone) fieldsInformation[this.phone] = recordInformation.P;
+            if (recordInformation.E && this.email) fieldsInformation[this.email] = recordInformation.E;
+            if (recordInformation.K && this.referenceId) fieldsInformation[this.referenceId] = recordInformation.K;
+            const record = await createRecord({ apiName: this.sobject, fields: fieldsInformation });
             this._logger.log(' ok!', false);
 
             // Insert was successful let's printout the new id!
-            this._logger.log(`Success! Lead created with Id: ${leadRecord.id}`);
-            this._showSuccess(leadRecord.id);
+            this._logger.log(`Success! ${this.sobject} created with Id: ${record.id}`);
+            this._showSuccess(this.sobject, record.id);
 
         } catch (error) {
             this._showError();
@@ -134,28 +174,29 @@ export default class LeadScanner extends NavigationMixin(LightningElement) {
     }
     
     /**
-     * @description Handles the click on the manual lead creation icon
+     * @description Handles the click on the manual creation icon
      */
-    handleManualLeadCreation() {
+    handleManualCreation() {
         this[NavigationMixin.Navigate]({
             type: "standard__objectPage",
             attributes: {
-                objectApiName: "Lead",
+                objectApiName: `${this.sobject}`,
                 actionName: "new",
             },
         });
     }
 
     /**
-     * @description Show the success message as a toast when correctly inserting a lead
-     * @param {string} leadId The Id of the created lead
+     * @description Show the success message as a toast when correctly inserting a record
+     * @param {string} sobject The API name of the created record
+     * @param {string} recordId The Id of the created record
      */
-    _showSuccess(leadId) {
+    _showSuccess(sobject, recordId) {
         Toast.show({
-            label: 'Success! A new lead has been created {leadLink}.',
+            label: `Success! A new ${sobject} has been created {link}.`,
             labelLinks: {
-                leadLink: {
-                    url: `/${leadId}`,
+                link: {
+                    url: `/${recordId}`,
                     label: 'here'
                 }
                 },
@@ -169,7 +210,7 @@ export default class LeadScanner extends NavigationMixin(LightningElement) {
      */
     _showError() {
         Toast.show({
-            label: 'Sorry! An error occured while using the scanner. You can create that lead manually.',
+            label: 'Sorry! An error occured while using the scanner. You can create that record manually.',
             variant: 'error',
             mode: 'dismissible'
         }, this);
